@@ -1,0 +1,47 @@
+
+<h1><%= @genre.name %>の投稿</h1>
+
+<% @genre.histories.each do |history| %>
+
+  <div class="clearfix">
+    <div class="pull-right">
+      <%= link_to "編集", history_path(history.id) %>
+    </div>
+  </div>
+ <%# このclearfixいる？ %>
+ <div class="clearfix">
+   <label>日付</label>
+     <div><%= history.dating %></div>
+ </div>
+
+<%# この文字を写真のすぐ上に入れたいが22行目に入れると１枚毎についてしまう %>
+<p>写真</p>
+
+ <% if history.history_images.present? %>
+  <% history.history_images.each do |image| %>
+
+  <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+
+ <% end %>
+
+ <% else %>
+    <%# <%= image_tag 'no_image.jpg', size: '200x200' %>
+ <% end %>
+
+  <div class="clearfix">
+    <div>
+      <p>内容</p>
+      <p><%= history.body %></p>
+    </div>
+
+    <div class="pull-right">
+      <label>合計</label>
+        <%= history.price %>
+    </div>
+  </div>
+<hr>
+
+<% end %>
+
+<%# pタグ　段落
+div 意味がない時、ただの箱として %>

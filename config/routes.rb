@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :tops
-  resources :genrs
-  get 'top' => 'tops#top'
-  root to:'top#index'
+  resources :genres
+  resources :histories
+  # exceptでshowを除外
+  root to:'tops#index'
+  get 'mypage', to: 'users#mypage'
+  # get 'histories/:id' => 'histories#index', as: 'history'
+
   # # ネストの書き方
   # resource :genre do
   #   resources :
