@@ -1,0 +1,42 @@
+<%# <div class="row">
+ <div class="col-xs-7 col-xs-offset-2 "> %>
+
+
+  <h1>一つの投稿</h1>
+
+  <div class="clearfix">
+    <div class="pull-right">
+      <%= link_to "編集", edit_history_path(@history.id) %>
+    </div>
+  </div>
+
+  <h2>画像</h2>
+
+    <% if @history.history_images.present? %>
+
+      <% @history.history_images.each do |image| %>
+        <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+      <% end %>
+
+    <% else %>
+        <%# <%= image_tag 'no_image.jpg', size: '200x200' %>
+    <% end %>
+
+    <div class="clearfix">
+      <div>
+        <p>内容</p>
+        <p><%= @history.body %></p>
+      </div>
+
+      <div class="pull-right">
+        <label>合計</label>
+          <%= @history.price %>
+      </div>
+    </div>
+
+
+
+    <%= link_to "削除", history_path(@history.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+</div>
+
+</div>
