@@ -22,4 +22,13 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  # database: db/production.sqlite3
+  # ↑デフォで書かれてたがここは書き換える？
+  database: <%= ENV['beauty_rc'] %>
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: <%= ENV['rds-mysql-server.c8aqzuwf449g.us-east-2.rds.amazonaws.com'] %>
+  username: <%= ENV['kyoto93'] %>
+  password: <%= ENV['kyoto0102'] %>

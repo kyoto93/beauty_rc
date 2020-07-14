@@ -1,0 +1,73 @@
+   <% if @history.errors.any? %>
+     <h2><%= @history.errors.count %> errors prohibited this book from being saved:</h2>
+    <ul>
+      <% @history.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+     </ul>
+    <% end %>
+
+<div class="row">
+ <div class="col-xs-7 col-xs-offset-2 ">
+
+  <h1>新規投稿</h1>
+    <%= form_for(@history) do |f| %>
+    <h3>カテゴリーを選択</h3>
+
+    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+<%# 　　参考記事　https://qiita.com/colorrabbit/items/b58888506e41d1370fd1 %>
+
+    <h4>日付</h4>
+    <%= f.text_field :dating, type: "date" %>
+
+    <h4>画像を選択する</h4>
+    <%= f.attachment_field :history_images_images, multiple:true %>
+
+    <div id="image-box__container">
+
+    <h4>内容</h4>
+    <%= f.text_area :body, class:"form-control" %>
+
+    <h4>価格</h4>
+    <%= f.number_field :price,min:1, class:"form-horizontal" %>円
+
+    <%= f.submit "新規登録", class:"btn btn-info btn-block btn-base-1 mt-20" %>
+
+ </div>
+</div>
+
+<% end %>
+
+<script>
+$(function(){
+  //querySelectorでfile_fieldを取得
+  var file_field = document.querySelector('input[type=file]')
+
+  //fileが選択された時に発火するイベント
+  $('#history_history_images_images').change(function(){
+
+    //  ファイルの数だけ処理を繰り返す
+    //  iに0を代入　一回の処理毎にiに1を足す　iの数がファイルの数になったら終了
+    for (var i = 0; i < $('input[type="file"]').prop('files').length; i++) {
+      var file = $('input[type="file"]').prop('files')[i];
+      //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
+      var fileReader = new FileReader();
+
+      //読み込みが完了すると、srcにfileのURLを格納
+      fileReader.onloadend = function(event) {
+        var picFile = event.target;
+        var html= `<img src="${picFile.result}" width="114" height="80">`
+
+        //image_box__container要素の前にhtmlを差し込む
+        $('#image-box__container').before(html);
+      }
+      fileReader.readAsDataURL(file);
+      console.log($('input[type="file"]').prop('files')[i]);
+    }
+  });
+});
+</script>
+<%# console.logで、一つ一つ確認する %>
+
+<%# マイグレーションファイルのimage_idの重複に注意 %>
+<%# 後ではなく先にどちらか一方を消さないと上手く複数投稿できない %>

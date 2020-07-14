@@ -1,0 +1,12 @@
+class CreateHistories < ActiveRecord::Migration[5.2]
+  def change
+    create_table :histories do |t|
+      t.integer :user_id
+      t.integer :genre_id
+      t.date :dating
+      t.text :body
+      t.integer :price
+      t.timestamps
+    end
+  end
+end

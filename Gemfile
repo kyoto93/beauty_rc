@@ -63,5 +63,17 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
+# 画像投稿用gem
+gem "refile", require: "refile/rails", github: 'manfe/refile', require: "refile/rails"
+# 画像加工用（サイズ調整など）gem
+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+
+# gem "bulma-rails"
+
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

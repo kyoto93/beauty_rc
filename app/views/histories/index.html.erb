@@ -1,0 +1,57 @@
+
+
+
+<h1><%= @genre.name %>の投稿</h1>
+
+  <div class="clearfix">
+    <div class="pull-right">
+      <%= link_to "新規登録", new_history_path, class:"btn btn-success" %>
+    </div>
+  </div>
+
+<hr>
+
+<% @genre.histories.order(created_at: "DESC").each do |history| %>
+
+  <div class="clearfix">
+    <div class="pull-right">
+      <%= link_to "詳 細", history_path(history.id), class:"btn btn-info"%>
+    </div>
+  </div>
+ <%# このclearfixいる？ %>
+ <div class="clearfix">
+   <label>日付</label>
+     <div><%= history.dating %></div>
+ </div>
+
+<p>写真</p>
+
+ <% if history.history_images.present? %>
+  <% history.history_images.each do |image| %>
+
+  <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+
+ <% end %>
+
+ <% else %>
+    <%# <%= image_tag 'no_image.jpg', size: '200x200' %>
+ <% end %>
+
+  <div class="clearfix">
+    <div>
+      <p>内容</p>
+      <p><%= history.body %></p>
+    </div>
+
+    <div class="pull-right">
+      <label>合計金額</label>
+      <div><%= "#{history.price} 円" %></div>
+
+    </div>
+  </div>
+<hr>
+
+<% end %>
+
+<%# pタグ　段落
+div 意味がない時、ただの箱として %>

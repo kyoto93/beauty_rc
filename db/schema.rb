@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_183805) do
+ActiveRecord::Schema.define(version: 2020_07_09_105750) do
 
   create_table "genres", force: :cascade do |t|
-    t.string "body"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "genre_id"
+    t.date "dating"
+    t.text "body"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "history_images", force: :cascade do |t|
+    t.integer "history_id"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
