@@ -1,7 +1,16 @@
-<h1>ようこそ 美カルテ へ！</h1>
 
- <P>美カルテ では、さまざまな書籍に関するあなたの意見や</P>
 
- <p>印象を共有し交換することができます</p>
+  <h1>ようこそ 美カルテ へ！</h1>
 
- <%= link_to "start", "/mypage" %>
+  <P>A girl should be</P>
+
+  <p>two things:</p>
+
+  <p>classy and fabulous.</p>
+
+  <p>Coco Chanel</p>
+  <% if user_signed_in?%>
+    <h4><%= link_to "start", "/mypage" %></h4>
+  <% else%>
+    <%= link_to "サインインしてください",  new_user_registration_path%>
+  <% end%>

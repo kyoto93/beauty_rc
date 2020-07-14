@@ -2,11 +2,12 @@
  <div class="col-xs-7 col-xs-offset-2 "> %>
 
 
-  <h1>一つの投稿</h1>
+
+  <h1>投稿詳細</h1>
 
   <div class="clearfix">
     <div class="pull-right">
-      <%= link_to "編集", edit_history_path(@history.id) %>
+      <%= link_to "編 集 す る", edit_history_path(@history.id), class:"btn btn-info" %>
     </div>
   </div>
 
@@ -33,10 +34,5 @@
           <%= @history.price %>
       </div>
     </div>
-
-
-
-    <%= link_to "削除", history_path(@history.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-</div>
-
+  </div>
 </div>

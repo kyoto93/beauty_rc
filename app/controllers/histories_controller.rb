@@ -1,4 +1,5 @@
 class HistoriesController < ApplicationController
+before_action :authenticate_user!
 
   def new
     @history = History.new
@@ -7,11 +8,11 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    #byebug
+    #byebug で止めて検証すると良いらしいよ！
     history = History.new(history_params)
     history.user_id = current_user.id
     history.save
-    redirect_to histories_path(genre_id:history.genre.id)
+    redirect_to histories_path(genre_id: history.genre.id)
   end
 
   def index
@@ -23,7 +24,6 @@ class HistoriesController < ApplicationController
 
   def show
      @history = History.find(params[:id])
-
   end
 
   def edit
@@ -33,7 +33,8 @@ class HistoriesController < ApplicationController
   def update
     history = History.find(params[:id])
     history.update(history_params)
-    redirect_to history_path(history.id)
+    redirect_to histories_path(genre_id: history.genre.id)
+    # redirect_to history_path(history.id)
   end
 
   def destroy

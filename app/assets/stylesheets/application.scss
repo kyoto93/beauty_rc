@@ -17,10 +17,17 @@
 
 @import "bootstrap-sprockets"; /*ここを追加*/
 @import "bootstrap"; /*ここを追加*/
-body {
-  border: 20px solid pink;
-}
+// body {
+//   border: 20px solid pink;
+// }
 
-#main {
-  min-height: calc(100vh - 124px);
-}
+// #main {
+//   min-height: calc(100vh - 124px);
+// }
+
+// // cssに画像を入れる時に記述すれば良い
+// assetsのimagesに画像が入ってる場合はimage-url
+// それ以外の場所に画像が入ってる場合はurlにする
+// body {
+//   background-image: image-url("hoge.jpg");
+// }

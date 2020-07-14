@@ -4,8 +4,11 @@
 
   <div class="clearfix">
     <div class="pull-right">
-      <h4><%= link_to "編集", edit_history_path(@history.id) %></h4>
-      <h4><%= link_to "削除", history_path(@history.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></h4>
+
+      <h4><%= f.submit '登　録' , class:"btn btn-success"%></h4>
+
+      <h4><%= link_to "削　除", history_path(@history.id), method: :delete, "data-confirm" => "本当に削除しますか？" ,class:"btn btn-danger"%></h4>
+
     </div>
   </div>
 
@@ -28,7 +31,7 @@
   <%= f.text_field :price %>
   </div>
 
-  <%= f.submit '保存' %>
+
 
 </div>
 <% end %>
