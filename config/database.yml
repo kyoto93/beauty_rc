@@ -31,4 +31,4 @@ production:
   collation: utf8mb4_general_ci
   host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DV_PASSWORD'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
