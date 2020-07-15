@@ -1,4 +1,3 @@
-# beauty_rc
 # Beauty_rc
 
 ## サイト概要
