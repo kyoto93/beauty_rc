@@ -17,7 +17,7 @@
 
 
 ## 設計書
-ER図（暫定版）
+ER図
 https://drive.google.com/file/d/1hFapjtDSgfckxxuceQHPX-7aPajcFygV/view?usp=sharing
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1mYgTR-Kzt-b5balv_EzElitPuifJ7tsiibk_XWfc7I4/edit#gid=0
